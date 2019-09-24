@@ -34,6 +34,7 @@ class App extends React.Component {
               ...snapShot.data()
             }
           });
+          console.log(this.state);
         });
       }
       //if userAuth == null, set our state to null as well:
