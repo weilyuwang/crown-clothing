@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./custom-button.styles.scss";
-import { is } from "css-select";
 
 const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => (
   <button
