@@ -8,6 +8,8 @@ import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-out/sign-in-and-sign-out.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user-actions";
+import { selectCurrentUser } from "./redux/user/user-selectors";
+import { createStructuredSelector } from "reselect";
 
 //want <Header> component to be present on every page, so put it out of the <Switch><Route>
 class App extends React.Component {
@@ -64,11 +66,18 @@ class App extends React.Component {
   }
 }
 
+/*
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
 });
+*/
 
-//pass setCurrentUser reducer function as prop into App
+//using selector:
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+
+//pass setCurrentUser action creator function as prop into App
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
