@@ -10,8 +10,8 @@ const CollectionPreview = ({ title, items }) => (
         .filter(
           (item, index) => index < 4
         ) /*only want to show 4 items for each category on the preview page*/
-        .map(({ id, ...otherItemProps }) => (
-          <CollectionItem key={id} {...otherItemProps} />
+        .map(item => (
+          <CollectionItem key={item.id} item={item} />
         ))}
     </div>
   </div>
