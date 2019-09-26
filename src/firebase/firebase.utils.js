@@ -15,10 +15,15 @@ const config = {
   measurementId: "G-VWSVQ8X99Y"
 };
 
+// Initialize Firebase
+firebase.initializeApp(config);
+
 export const createUserProfileDocument = async (userAuth, otherData) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`user/${userAuth.uid}`);
+
   const snapShot = await userRef.get(); //get() is async
+
   if (!snapShot.exists) {
     //if user doc not existed yet in our database
     const { displayName, email } = userAuth;
@@ -38,8 +43,22 @@ export const createUserProfileDocument = async (userAuth, otherData) => {
   return userRef;
 };
 
-// Initialize Firebase
-firebase.initializeApp(config);
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = firestore.collection(collectionKey);
+
+  //console.log(collectionRef);
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach(obj => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
