@@ -44,9 +44,11 @@ const mapStateToProps = state => ({
 });
 */
 
-//use createStructuredSelector to automatically pass state to individual selectos:
+//use createStructuredSelector to automatically pass state to individual selectors:
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems
 });
 
+//withRouter:
+//This gives the CartDropdown component access to this.props.history, which means the CartDropdown can now redirect the user.
 export default withRouter(connect(mapStateToProps)(CartDropdown));
