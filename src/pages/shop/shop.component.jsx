@@ -11,7 +11,8 @@ import { fetchCollectionsStart } from "../../redux/shop/shop-actions";
 const ShopPage = ({ fetchCollectionsStart, match }) => {
   useEffect(() => {
     fetchCollectionsStart();
-  }, [fetchCollectionsStart]); //second param just simply means that we dont want to fire up fetchCollectionsStart again.
+  }, [fetchCollectionsStart]);
+  // [fetchCollectionsStart] paramter means that we only want to fire up fetchCollectionsStart once.
 
   return (
     <div className="shop-page">
