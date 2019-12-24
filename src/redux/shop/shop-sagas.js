@@ -1,4 +1,4 @@
-import { takeLatest, all, call, put } from "redux-saga/effects";
+import { takeLatest, all, call, put, delay } from "redux-saga/effects";
 import ShopActionTypes from "./shop-types";
 import {
   firestore,
@@ -18,6 +18,7 @@ export function* fetchCollectionsAsync() {
       convertCollectionsSnapshotToMap,
       snapshot
     );
+    yield delay(500); // intentionally do this 0.8s delay (to mock the loading spinner effect)
     yield put(fetchCollectionsSuccess(collectionsMap));
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message));
