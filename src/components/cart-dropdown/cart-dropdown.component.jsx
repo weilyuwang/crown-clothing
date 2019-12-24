@@ -6,49 +6,56 @@ import { selectCartItems } from "../../redux/cart/cart-selectors";
 import { toggleCartHidden } from "../../redux/cart/cart-actions";
 import { withRouter } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
-import "./cart-dropdown.styles.scss";
+import {
+  CartDropdownContainer,
+  CartDropdownButton,
+  EmptyMessageContainer,
+  CartItemsContainer
+} from "./cart-dropdown.styles";
 
-//connect function automatically passes a dispatch prop into our component (if no mapDispatchToProps is provided to connect()), so we can use the dispatch function directly
+// connect function automatically passes a dispatch prop into our component (if no mapDispatchToProps is provided to connect()), so we can use the dispatch function directly
 const CartDropdown = ({ cartItems, history, dispatch }) => (
-  <div className="cart-dropdown">
-    <div className="cart-items">
+  <CartDropdownContainer>
+    <CartItemsContainer>
       {cartItems.length ? (
         cartItems.map(cartItem => (
           <CartItem key={cartItem.id} item={cartItem} />
         ))
       ) : (
-        <span className="empty-message">Your cart is empty</span>
+        <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
       )}
-    </div>
-    <CustomButton
+    </CartItemsContainer>
+    <CartDropdownButton
       onClick={() => {
         history.push("/checkout");
         dispatch(toggleCartHidden());
       }}
     >
       GO TO CHECKOUT
-    </CustomButton>
-  </div>
+    </CartDropdownButton>
+  </CartDropdownContainer>
 );
 
 /*
+// original mapStateToProps
+
 const mapStateToProps = state => ({
   cartItems: state.cart.cartItems
 });
-*/
 
-//use selector:
-/*
+
+// use selector:
+
 const mapStateToProps = state => ({
   cartItems: selectCartItems(state)
 });
 */
 
-//use createStructuredSelector to automatically pass state to individual selectors:
+// use createStructuredSelector to automatically pass state to individual selectors:
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems
 });
 
-//withRouter:
-//This gives the CartDropdown component access to this.props.history, which means the CartDropdown can now redirect the user.
+// withRouter:
+// This gives the CartDropdown component access to this.props.history, which means the CartDropdown can now redirect the user.
 export default withRouter(connect(mapStateToProps)(CartDropdown));

@@ -6,7 +6,12 @@ import {
   googleSignInStart,
   emailSignInStart
 } from "../../redux/user/user-actions";
-import "./sign-in.styles.scss";
+
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsBarContainer
+} from "./sign-in.styles";
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
@@ -17,9 +22,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const { email, password } = userCredentials;
 
   const handleSubmit = async event => {
-    event.preventDefault(); //we want full control of the  result of submitting the form. So prevent the default submit action.
+    //we want full control of the  result of submitting the form. So prevent the default submit action.
+    event.preventDefault();
     const { email, password } = userCredentials;
-    //this is coming from the props, will trigger to dispatch the emailSignInStart action (same name)
     emailSignInStart(email, password);
   };
 
@@ -34,8 +39,8 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   };
 
   return (
-    <div className="sign-in">
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <SignInTitle>I already have an account</SignInTitle>
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
@@ -55,7 +60,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           label="password"
           required
         />
-        <div className="buttons">
+        <ButtonsBarContainer>
           <CustomButton type="submit">Sign In</CustomButton>
           <CustomButton
             type="button"
@@ -64,9 +69,9 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           >
             Sign in with Google
           </CustomButton>
-        </div>
+        </ButtonsBarContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
@@ -76,7 +81,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(emailSignInStart({ email, password }))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);
