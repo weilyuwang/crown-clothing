@@ -24,7 +24,6 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const handleSubmit = async event => {
     //we want full control of the  result of submitting the form. So prevent the default submit action.
     event.preventDefault();
-    const { email, password } = userCredentials;
     emailSignInStart(email, password);
   };
 

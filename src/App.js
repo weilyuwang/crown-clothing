@@ -17,12 +17,6 @@ import { checkUserSession } from "./redux/user/user-actions";
 
 //want <Header> component to be present on every page, so put it out of the <Switch><Route>
 const App = ({ checkUserSession, currentUser }) => {
-  /*
-  componentDidMount() {
-    checkUserSession();
-  }
-  */
-
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
@@ -55,7 +49,4 @@ const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

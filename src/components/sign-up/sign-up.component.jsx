@@ -81,6 +81,7 @@ const SignUp = ({ signUpStart }) => {
 
 const mapDispathToProps = dispatch => ({
   signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
+  // userCredentials = { email, password, displayName }
 });
 
 export default connect(null, mapDispathToProps)(SignUp);

@@ -73,7 +73,9 @@ export function* signOut() {
 export function* signUp({ payload: { email, password, displayName } }) {
   try {
     //must use name 'user', its a named property of returned object of
-    //auth.createUserWithEmailAndPassword
+    //auth.createUserWithEmailAndPassword()
+
+    // TODO fix bug: returned `user` object is undefined
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
   } catch (error) {
@@ -81,8 +83,8 @@ export function* signUp({ payload: { email, password, displayName } }) {
   }
 }
 
-export function* signInAfterSignUp({ payload: { userAuth, additionalData } }) {
-  yield getSnapshotFromUserAuth(userAuth, additionalData);
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
+  yield getSnapshotFromUserAuth(user, additionalData);
 }
 
 export function* onGoogleSignInStart() {

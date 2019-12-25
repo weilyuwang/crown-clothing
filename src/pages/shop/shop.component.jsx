@@ -8,11 +8,11 @@ import CollectionPageContainer from "../collection/collection.container";
 
 import { fetchCollectionsStart } from "../../redux/shop/shop-actions";
 
-const ShopPage = ({ fetchCollectionsStart, match }) => {
+const ShopPage = ({ dispatchFetchCollectionsStart, match }) => {
   useEffect(() => {
-    fetchCollectionsStart();
-  }, [fetchCollectionsStart]);
-  // [fetchCollectionsStart] paramter means that we only want to fire up fetchCollectionsStart once.
+    dispatchFetchCollectionsStart();
+  }, [dispatchFetchCollectionsStart]);
+  // [dispatchFetchCollectionsStart] paramter means that we only want to fire up dispatchFetchCollectionsStart once.
 
   return (
     <div className="shop-page">
@@ -31,7 +31,7 @@ const ShopPage = ({ fetchCollectionsStart, match }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
+  dispatchFetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);
