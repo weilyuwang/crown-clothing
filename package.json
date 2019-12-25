@@ -20,7 +20,7 @@
     "dotenv": "7.0.0",
     "express": "^4.16.4",
     "stripe": "6.28.0",
-    "grpc": "1.23.3"
+    "grpc": "1.24.1"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"
