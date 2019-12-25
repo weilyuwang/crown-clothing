@@ -1,6 +1,10 @@
 {
   "name": "crown-clothing-server",
   "version": "1.0.0",
+  "engines": {
+    "node": "13.2.0",
+    "npm": "6.13.1"
+  },
   "scripts": {
     "client": "cd client && npm start",
     "server": "nodemon server.js",
