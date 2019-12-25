@@ -19,7 +19,8 @@
     "cors": "2.8.5",
     "dotenv": "7.0.0",
     "express": "^4.16.4",
-    "stripe": "6.28.0"
+    "stripe": "6.28.0",
+    "grpc": "1.23.3"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"
