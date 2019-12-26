@@ -1,25 +1,28 @@
 {
-  "name": "crown-clothing",
+  "name": "crwn-clothing",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "0.19.0",
     "core-js": "^3.6.1",
-    "firebase": "^6.6.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
+    "firebase": "^7.6.1",
+    "node-sass": "4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "7.0.3",
+    "react-router-dom": "5.0.0",
     "react-stripe-checkout": "^2.6.3",
-    "redux": "^4.0.4",
-    "redux-logger": "^3.0.6",
-    "redux-persist": "^6.0.0",
-    "redux-saga": "^1.1.1",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
-    "styled-components": "^4.4.0",
-    "grpc": "1.24.1"
+    "redux": "4.0.1",
+    "redux-logger": "3.0.6",
+    "redux-persist": "5.10.0",
+    "redux-saga": "1.0.2",
+    "redux-thunk": "2.3.0",
+    "reselect": "4.0.0",
+    "styled-components": "4.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "^3.3.0"
   },
   "resolutions": {
     "babel-jest": "24.9.0"
@@ -29,9 +32,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "react-scripts": "^3.3.0"
   },
   "eslintConfig": {
     "extends": "react-app"
